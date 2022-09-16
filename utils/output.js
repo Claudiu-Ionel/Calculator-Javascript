@@ -32,12 +32,8 @@ valueButtons.forEach((button) => {
 
 function calculatePreview() {
   const calculation = eval(output.textContent)
-  const outputText = output.textContent
-  if (calculation !== undefined && calculation != outputText) {
-    calcPreviewContainer.textContent = eval(output.textContent)
-  } else {
-    return
-  }
+  calcPreviewContainer.textContent = calculation
+  console.log(calculation)
 }
 
 function deleteCharacter() {
@@ -97,14 +93,15 @@ function equal() {
 function add0(event) {
   let outputText = output.textContent
   let buttonValue = event.target.value
+
   if (outputText.indexOf("0") === 0 && !outputText.includes(".")) {
     outputText = `${buttonValue}.`
+    calculatePreview()
   } else {
     output.textContent = `${outputText}${buttonValue}`
+    calculatePreview()
   }
-  if (outputText.length > 0 && outputText.includes(".")) {
-    output.textContent = `${outputText}${buttonValue}`
-  }
+
 
 }
 function outputValuesToView(event) {
